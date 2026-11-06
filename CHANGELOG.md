@@ -3,6 +3,7 @@
 ## 2.1.2
 
 - Fixed the file icon theme: icon paths are now relative to the icon theme file, so the icons load in VS Code.
+- Removed the terminal prompt (Starship) feature; the extension no longer changes terminal settings or writes files.
 - Releases are built and published by GitHub Actions; `main` is protected and `dev` builds test versions.
 
 ## 2.1.1

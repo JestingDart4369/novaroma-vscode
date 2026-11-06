@@ -1,6 +1,6 @@
 # Novaroma
 
-Colour themes, a file icon theme, a product icon theme, Markdown preview styling, a terminal prompt and profiles for VS Code, built from the Nova Roma design system of [novaroma-homelab.uk](https://novaroma-homelab.uk): burgundy `main`, cream `accent`, near-black `text`, and five seasons.
+Colour themes, a file icon theme, a product icon theme, Markdown preview styling and profiles for VS Code, built from the Nova Roma design system of [novaroma-homelab.uk](https://novaroma-homelab.uk): burgundy `main`, cream `accent`, near-black `text`, and five seasons.
 
 ![Novaroma Herbst Light and Dark](images/hero.png)
 
@@ -70,12 +70,6 @@ While a Novaroma colour theme is active, the Markdown preview uses the Nova Roma
 
 ![Markdown preview in Herbst Light and Winter Dark](images/markdown.png)
 
-## Terminal prompt
-
-The extension includes a Novaroma prompt for [Starship](https://starship.rs), which works in zsh, bash, fish and PowerShell. It shows the folder, git branch and status, the Python, .NET or Node version, and how long a slow command took. It uses only the 16 terminal colours and plain-text glyphs, so it follows the active Novaroma theme and needs no special font.
-
-Run **Novaroma: Toggle Novaroma Terminal Prompt (Starship)** to use it in VS Code's terminal. This only sets `STARSHIP_CONFIG` for new VS Code terminals; your shell's own configuration and other terminal apps stay as they are. Starship must be installed and started in your shell (for zsh: `eval "$(starship init zsh)"` at the end of `~/.zshrc`). **Novaroma: Open Terminal Prompt Config** shows the file; copy it to `~/.config/starship.toml` to use it outside VS Code too.
-
 ## Seasons, light/dark and swapped
 
 The extension switches the theme for you:
@@ -98,7 +92,6 @@ If you pick a Novaroma theme by hand in **Preferences: Color Theme**, the extens
 - `novaroma.autoApply`: switch automatically when the season or these settings change, only while a Novaroma theme is in use (default `true`).
 - `novaroma.setIconTheme`: also select Novaroma Icons when applying (default `true`).
 - `novaroma.setProductIconTheme`: also select Novaroma Product Icons when applying (default `true`).
-- `novaroma.terminalPrompt`: use the Novaroma Starship prompt in VS Code's terminal (default `false`).
 - `novaroma.showStatusBarItem`: show the season in the status bar (default `true`).
 
 ## Profiles
