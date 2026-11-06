@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.3
+
+- Markdown preview: task lists (`- [ ]` and `- [x]`) now show as checkboxes instead of plain text.
+
 ## 2.1.2
 
 - Fixed the file icon theme: icon paths are now relative to the icon theme file, so the icons load in VS Code.
