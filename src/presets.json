@@ -1,0 +1,63 @@
+{
+  "base": {
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.roundedSelection": true,
+    "editor.semanticHighlighting.enabled": true,
+    "workbench.tree.indent": 14,
+    "workbench.tree.renderIndentGuides": "always"
+  },
+  "presets": [
+    {
+      "id": "standard",
+      "label": "Novaroma Standard",
+      "icon": "symbol-color",
+      "description": "Theme and icons only, plus the shared Novaroma editor feel.",
+      "settings": {}
+    },
+    {
+      "id": "focus",
+      "label": "Novaroma Focus",
+      "icon": "eye",
+      "description": "Quiet editor: no minimap, no breadcrumbs, one tab, gutter-only line highlight.",
+      "settings": {
+        "editor.minimap.enabled": false,
+        "breadcrumbs.enabled": false,
+        "editor.renderLineHighlight": "gutter",
+        "editor.occurrencesHighlight": "off",
+        "editor.stickyScroll.enabled": false,
+        "workbench.editor.showTabs": "single",
+        "zenMode.centerLayout": true
+      }
+    },
+    {
+      "id": "presentation",
+      "label": "Novaroma Presentation",
+      "icon": "device-camera-video",
+      "description": "For the beamer: large editor and terminal text, 1.7 line height, no minimap.",
+      "settings": {
+        "editor.fontSize": 18,
+        "editor.lineHeight": 1.7,
+        "terminal.integrated.fontSize": 16,
+        "editor.minimap.enabled": false,
+        "editor.renderWhitespace": "none",
+        "workbench.editor.showTabs": "multiple"
+      }
+    },
+    {
+      "id": "compact",
+      "label": "Novaroma Compact",
+      "icon": "screen-normal",
+      "description": "Small screens: smaller text, tighter tree, no minimap.",
+      "settings": {
+        "editor.fontSize": 12,
+        "terminal.integrated.fontSize": 12,
+        "workbench.tree.indent": 10,
+        "editor.minimap.enabled": false,
+        "breadcrumbs.enabled": true
+      }
+    }
+  ]
+}
