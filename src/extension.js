@@ -3,6 +3,8 @@
 const vscode = require("vscode");
 const presets = require("./presets.json");
 const { taskLists } = require("./tasklists");
+const { obsidian } = require("./obsidian");
+const footnotes = require("./vendor/markdown-it-footnote");
 
 const SEASONS = [
   { id: "standard", name: "Standard", detail: "The live novaroma-homelab.uk colours" },
@@ -331,8 +333,8 @@ function activate(context) {
 
   startup();
 
-  // Markdown preview: render "- [ ]" / "- [x]" as checkboxes.
-  return { extendMarkdownIt: (md) => taskLists(md) };
+  // Markdown preview: task lists, Obsidian callouts, tags, highlights, comments and footnotes.
+  return { extendMarkdownIt: (md) => taskLists(obsidian(md.use(footnotes))) };
 }
 
 function deactivate() {}
