@@ -2,7 +2,7 @@
 
 ## Branches
 
-- `dev` is where changes are made and tested. Every push to `dev` runs the checks and replaces the **dev** pre-release on GitHub with a fresh test VSIX (Releases → "Novaroma dev build"). Install it with Extensions → … → Install from VSIX.
+- `dev` is where changes are made and tested. Every push to `dev` runs the checks and replaces the **dev-build** pre-release on GitHub with a fresh test VSIX (Releases → "Novaroma dev build"). Install it with Extensions → … → Install from VSIX.
 - `main` is protected. It only changes through a pull request from `dev`, and only when the **build** check passes. Force pushes and deleting the branch are blocked.
 - Every merge into `main` that carries a new version is published to the Visual Studio Marketplace automatically, tagged `v<version>` and released on GitHub with the VSIX.
 
