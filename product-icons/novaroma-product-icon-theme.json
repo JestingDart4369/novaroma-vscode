@@ -1,0 +1,308 @@
+{
+  "fonts": [
+    {
+      "id": "novaroma-product",
+      "src": [
+        {
+          "path": "./novaroma-product-icons.woff",
+          "format": "woff"
+        }
+      ],
+      "weight": "normal",
+      "style": "normal"
+    }
+  ],
+  "iconDefinitions": {
+    "files": {
+      "fontCharacter": "\\E100"
+    },
+    "search": {
+      "fontCharacter": "\\E101"
+    },
+    "source-control": {
+      "fontCharacter": "\\E102"
+    },
+    "debug-alt": {
+      "fontCharacter": "\\E103"
+    },
+    "extensions": {
+      "fontCharacter": "\\E104"
+    },
+    "account": {
+      "fontCharacter": "\\E105"
+    },
+    "settings-gear": {
+      "fontCharacter": "\\E106"
+    },
+    "gear": {
+      "fontCharacter": "\\E107"
+    },
+    "beaker": {
+      "fontCharacter": "\\E108"
+    },
+    "remote-explorer": {
+      "fontCharacter": "\\E109"
+    },
+    "remote": {
+      "fontCharacter": "\\E10A"
+    },
+    "chevron-right": {
+      "fontCharacter": "\\E10B"
+    },
+    "chevron-left": {
+      "fontCharacter": "\\E10C"
+    },
+    "chevron-down": {
+      "fontCharacter": "\\E10D"
+    },
+    "chevron-up": {
+      "fontCharacter": "\\E10E"
+    },
+    "triangle-right": {
+      "fontCharacter": "\\E10F"
+    },
+    "triangle-down": {
+      "fontCharacter": "\\E110"
+    },
+    "arrow-right": {
+      "fontCharacter": "\\E111"
+    },
+    "arrow-left": {
+      "fontCharacter": "\\E112"
+    },
+    "arrow-up": {
+      "fontCharacter": "\\E113"
+    },
+    "arrow-down": {
+      "fontCharacter": "\\E114"
+    },
+    "arrow-swap": {
+      "fontCharacter": "\\E115"
+    },
+    "close": {
+      "fontCharacter": "\\E116"
+    },
+    "add": {
+      "fontCharacter": "\\E117"
+    },
+    "remove": {
+      "fontCharacter": "\\E118"
+    },
+    "check": {
+      "fontCharacter": "\\E119"
+    },
+    "check-all": {
+      "fontCharacter": "\\E11A"
+    },
+    "pass": {
+      "fontCharacter": "\\E11B"
+    },
+    "ellipsis": {
+      "fontCharacter": "\\E11C"
+    },
+    "kebab-vertical": {
+      "fontCharacter": "\\E11D"
+    },
+    "menu": {
+      "fontCharacter": "\\E11E"
+    },
+    "split-horizontal": {
+      "fontCharacter": "\\E11F"
+    },
+    "split-vertical": {
+      "fontCharacter": "\\E120"
+    },
+    "refresh": {
+      "fontCharacter": "\\E121"
+    },
+    "collapse-all": {
+      "fontCharacter": "\\E122"
+    },
+    "expand-all": {
+      "fontCharacter": "\\E123"
+    },
+    "new-file": {
+      "fontCharacter": "\\E124"
+    },
+    "new-folder": {
+      "fontCharacter": "\\E125"
+    },
+    "filter": {
+      "fontCharacter": "\\E126"
+    },
+    "edit": {
+      "fontCharacter": "\\E127"
+    },
+    "trash": {
+      "fontCharacter": "\\E128"
+    },
+    "copy": {
+      "fontCharacter": "\\E129"
+    },
+    "link-external": {
+      "fontCharacter": "\\E12A"
+    },
+    "pin": {
+      "fontCharacter": "\\E12B"
+    },
+    "pinned": {
+      "fontCharacter": "\\E12C"
+    },
+    "circle-filled": {
+      "fontCharacter": "\\E12D"
+    },
+    "circle-large-outline": {
+      "fontCharacter": "\\E12E"
+    },
+    "circle-large-filled": {
+      "fontCharacter": "\\E12F"
+    },
+    "clear-all": {
+      "fontCharacter": "\\E130"
+    },
+    "history": {
+      "fontCharacter": "\\E131"
+    },
+    "discard": {
+      "fontCharacter": "\\E132"
+    },
+    "list-tree": {
+      "fontCharacter": "\\E133"
+    },
+    "list-flat": {
+      "fontCharacter": "\\E134"
+    },
+    "go-to-file": {
+      "fontCharacter": "\\E135"
+    },
+    "save": {
+      "fontCharacter": "\\E136"
+    },
+    "bell": {
+      "fontCharacter": "\\E137"
+    },
+    "bell-dot": {
+      "fontCharacter": "\\E138"
+    },
+    "bell-slash": {
+      "fontCharacter": "\\E139"
+    },
+    "sync": {
+      "fontCharacter": "\\E13A"
+    },
+    "git-branch": {
+      "fontCharacter": "\\E13B"
+    },
+    "git-commit": {
+      "fontCharacter": "\\E13C"
+    },
+    "git-pull-request": {
+      "fontCharacter": "\\E13D"
+    },
+    "error": {
+      "fontCharacter": "\\E13E"
+    },
+    "warning": {
+      "fontCharacter": "\\E13F"
+    },
+    "info": {
+      "fontCharacter": "\\E140"
+    },
+    "lightbulb": {
+      "fontCharacter": "\\E141"
+    },
+    "lightbulb-autofix": {
+      "fontCharacter": "\\E142"
+    },
+    "play": {
+      "fontCharacter": "\\E143"
+    },
+    "debug-start": {
+      "fontCharacter": "\\E144"
+    },
+    "run-all": {
+      "fontCharacter": "\\E145"
+    },
+    "debug-continue": {
+      "fontCharacter": "\\E146"
+    },
+    "debug-pause": {
+      "fontCharacter": "\\E147"
+    },
+    "debug-stop": {
+      "fontCharacter": "\\E148"
+    },
+    "debug-restart": {
+      "fontCharacter": "\\E149"
+    },
+    "debug-step-over": {
+      "fontCharacter": "\\E14A"
+    },
+    "debug-step-into": {
+      "fontCharacter": "\\E14B"
+    },
+    "debug-step-out": {
+      "fontCharacter": "\\E14C"
+    },
+    "debug-disconnect": {
+      "fontCharacter": "\\E14D"
+    },
+    "debug-breakpoint": {
+      "fontCharacter": "\\E14E"
+    },
+    "terminal": {
+      "fontCharacter": "\\E14F"
+    },
+    "output": {
+      "fontCharacter": "\\E150"
+    },
+    "layout-sidebar-left": {
+      "fontCharacter": "\\E151"
+    },
+    "layout-sidebar-left-off": {
+      "fontCharacter": "\\E152"
+    },
+    "layout-sidebar-right": {
+      "fontCharacter": "\\E153"
+    },
+    "layout-sidebar-right-off": {
+      "fontCharacter": "\\E154"
+    },
+    "layout-panel": {
+      "fontCharacter": "\\E155"
+    },
+    "layout-panel-off": {
+      "fontCharacter": "\\E156"
+    },
+    "layout": {
+      "fontCharacter": "\\E157"
+    },
+    "symbol-color": {
+      "fontCharacter": "\\E158"
+    },
+    "color-mode": {
+      "fontCharacter": "\\E159"
+    },
+    "calendar": {
+      "fontCharacter": "\\E15A"
+    },
+    "eye": {
+      "fontCharacter": "\\E15B"
+    },
+    "device-camera-video": {
+      "fontCharacter": "\\E15C"
+    },
+    "screen-normal": {
+      "fontCharacter": "\\E15D"
+    },
+    "home": {
+      "fontCharacter": "\\E15E"
+    },
+    "star-empty": {
+      "fontCharacter": "\\E15F"
+    },
+    "star-full": {
+      "fontCharacter": "\\E160"
+    }
+  }
+}

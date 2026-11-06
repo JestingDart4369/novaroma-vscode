@@ -1,0 +1,175 @@
+/* Novaroma Markdown preview — the Nova Roma web style (outlined boxes, pills, no shadows).
+   Only active while a Novaroma colour theme is selected. Colours come from the active theme,
+   so every season and light/dark variant applies automatically:
+     --nr-main   editor.foreground          (main)
+     --nr-text   editorLineNumber.activeForeground (text, headings)
+     --nr-muted  descriptionForeground      (muted)
+     --nr-accent widget.border              (accent, outlines)
+     --nr-ink    tab.activeBorderTop        (season-ink)
+     --nr-season statusBar.background       (season fill)
+     --nr-on-season statusBar.foreground    (ink on season) */
+
+body[data-vscode-theme-name^="Novaroma"],
+body[data-vscode-theme-id^="Novaroma"] {
+  --nr-bg: var(--vscode-editor-background);
+  --nr-main: var(--vscode-editor-foreground);
+  --nr-text: var(--vscode-editorLineNumber-activeForeground);
+  --nr-muted: var(--vscode-descriptionForeground);
+  --nr-accent: var(--vscode-widget-border);
+  --nr-ink: var(--vscode-tab-activeBorderTop);
+  --nr-season: var(--vscode-statusBar-background);
+  --nr-on-season: var(--vscode-statusBar-foreground);
+  --nr-code-bg: var(--vscode-textCodeBlock-background);
+  --nr-focus: var(--vscode-focusBorder);
+
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--nr-main);
+  background: var(--nr-bg);
+  line-height: 1.7;
+  max-width: 52rem;
+  padding: 1rem 2rem 3rem;
+}
+
+/* headings: text colour, the site's scale */
+body[data-vscode-theme-name^="Novaroma"] :is(h1, h2, h3, h4, h5, h6),
+body[data-vscode-theme-id^="Novaroma"] :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--nr-text);
+  font-weight: 700;
+  line-height: 1.25;
+  border: 0;
+  margin: 1.6em 0 0.6em;
+}
+body[data-vscode-theme-name^="Novaroma"] h1,
+body[data-vscode-theme-id^="Novaroma"] h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  padding-bottom: 0.4em;
+  border-bottom: 2px solid var(--nr-main);
+}
+body[data-vscode-theme-name^="Novaroma"] h2,
+body[data-vscode-theme-id^="Novaroma"] h2 { font-size: 1.3rem; }
+body[data-vscode-theme-name^="Novaroma"] h3,
+body[data-vscode-theme-id^="Novaroma"] h3 { font-size: 1rem; }
+body[data-vscode-theme-name^="Novaroma"] :is(h4, h5, h6),
+body[data-vscode-theme-id^="Novaroma"] :is(h4, h5, h6) {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--nr-muted);
+}
+
+/* links */
+body[data-vscode-theme-name^="Novaroma"] a,
+body[data-vscode-theme-id^="Novaroma"] a {
+  color: var(--nr-main);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  transition: color 0.2s ease;
+}
+body[data-vscode-theme-name^="Novaroma"] a:hover,
+body[data-vscode-theme-id^="Novaroma"] a:hover { color: var(--nr-muted); }
+body[data-vscode-theme-name^="Novaroma"] a:focus-visible,
+body[data-vscode-theme-id^="Novaroma"] a:focus-visible {
+  outline: 3px solid var(--nr-focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* lists */
+body[data-vscode-theme-name^="Novaroma"] li::marker,
+body[data-vscode-theme-id^="Novaroma"] li::marker { color: var(--nr-ink); }
+body[data-vscode-theme-name^="Novaroma"] input[type="checkbox"],
+body[data-vscode-theme-id^="Novaroma"] input[type="checkbox"] { accent-color: var(--nr-main); }
+
+/* inline code: accent chip, radius-code */
+body[data-vscode-theme-name^="Novaroma"] :not(pre) > code,
+body[data-vscode-theme-id^="Novaroma"] :not(pre) > code {
+  background: var(--nr-code-bg);
+  color: var(--nr-main);
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  font-size: 0.9em;
+}
+
+/* code blocks: outlined box, radius-item */
+body[data-vscode-theme-name^="Novaroma"] pre,
+body[data-vscode-theme-id^="Novaroma"] pre {
+  background: transparent;
+  border: 2px solid var(--nr-accent);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: none;
+}
+
+/* blockquote: outlined block with a season-ink edge */
+body[data-vscode-theme-name^="Novaroma"] blockquote,
+body[data-vscode-theme-id^="Novaroma"] blockquote {
+  background: transparent;
+  border: 2px solid var(--nr-accent);
+  border-left: 4px solid var(--nr-ink);
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  margin: 1rem 0;
+  color: var(--nr-main);
+}
+
+/* tables: outlined, accent header row */
+body[data-vscode-theme-name^="Novaroma"] table,
+body[data-vscode-theme-id^="Novaroma"] table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid var(--nr-accent);
+  border-radius: 12px;
+  overflow: hidden;
+}
+body[data-vscode-theme-name^="Novaroma"] :is(th, td),
+body[data-vscode-theme-id^="Novaroma"] :is(th, td) {
+  border: 0;
+  border-bottom: 1px solid var(--nr-accent);
+  padding: 0.5rem 0.8rem;
+}
+body[data-vscode-theme-name^="Novaroma"] tr:last-child td,
+body[data-vscode-theme-id^="Novaroma"] tr:last-child td { border-bottom: 0; }
+body[data-vscode-theme-name^="Novaroma"] th,
+body[data-vscode-theme-id^="Novaroma"] th {
+  background: var(--nr-code-bg);
+  color: var(--nr-text);
+  text-align: left;
+}
+
+/* rule: the 2px main divider */
+body[data-vscode-theme-name^="Novaroma"] hr,
+body[data-vscode-theme-id^="Novaroma"] hr {
+  border: 0;
+  height: 2px;
+  background: var(--nr-main);
+  margin: 2rem 0;
+}
+
+/* highlight: season fill with its ink */
+body[data-vscode-theme-name^="Novaroma"] mark,
+body[data-vscode-theme-id^="Novaroma"] mark {
+  background: var(--nr-season);
+  color: var(--nr-on-season);
+  border-radius: 4px;
+  padding: 0 0.2em;
+}
+
+body[data-vscode-theme-name^="Novaroma"] img,
+body[data-vscode-theme-id^="Novaroma"] img { border-radius: 8px; }
+
+body[data-vscode-theme-name^="Novaroma"] kbd,
+body[data-vscode-theme-id^="Novaroma"] kbd {
+  border: 1px solid var(--nr-accent);
+  border-radius: 999px;
+  padding: 0.05em 0.55em;
+  font-size: 0.8em;
+  background: transparent;
+  color: var(--nr-main);
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-vscode-theme-name^="Novaroma"] a,
+  body[data-vscode-theme-id^="Novaroma"] a { transition: none; }
+}

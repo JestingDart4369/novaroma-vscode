@@ -1,0 +1,296 @@
+{
+  "name": "novaroma",
+  "displayName": "Novaroma",
+  "description": "Nova Roma colour, file icon and product icon themes for VS Code: Standard, Frühling, Sommer, Herbst and Winter in light and dark, normal and swapped, with automatic seasons, profiles, Markdown preview styling and a terminal prompt.",
+  "version": "2.1.1",
+  "publisher": "JestingDart4369",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#eee3c9",
+    "theme": "light"
+  },
+  "homepage": "https://novaroma-homelab.uk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JestingDart4369/novaroma-vscode.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "icon theme",
+    "nova roma",
+    "novaroma",
+    "burgundy",
+    "cream",
+    "seasons",
+    "light",
+    "dark",
+    "product icon theme",
+    "markdown",
+    "starship"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Novaroma Standard Light",
+        "uiTheme": "vs",
+        "path": "./themes/novaroma-standard-light-color-theme.json"
+      },
+      {
+        "label": "Novaroma Standard Light Swapped",
+        "uiTheme": "vs",
+        "path": "./themes/novaroma-standard-light-swapped-color-theme.json"
+      },
+      {
+        "label": "Novaroma Frühling Light",
+        "uiTheme": "vs",
+        "path": "./themes/novaroma-fruehling-light-color-theme.json"
+      },
+      {
+        "label": "Novaroma Frühling Light Swapped",
+        "uiTheme": "vs",
+        "path": "./themes/novaroma-fruehling-light-swapped-color-theme.json"
+      },
+      {
+        "label": "Novaroma Sommer Light",
+        "uiTheme": "vs",
+        "path": "./themes/novaroma-sommer-light-color-theme.json"
+      },
+      {
+        "label": "Novaroma Sommer Light Swapped",
+        "uiTheme": "vs",
+        "path": "./themes/novaroma-sommer-light-swapped-color-theme.json"
+      },
+      {
+        "label": "Novaroma Herbst Light",
+        "uiTheme": "vs",
+        "path": "./themes/novaroma-herbst-light-color-theme.json"
+      },
+      {
+        "label": "Novaroma Herbst Light Swapped",
+        "uiTheme": "vs",
+        "path": "./themes/novaroma-herbst-light-swapped-color-theme.json"
+      },
+      {
+        "label": "Novaroma Winter Light",
+        "uiTheme": "vs",
+        "path": "./themes/novaroma-winter-light-color-theme.json"
+      },
+      {
+        "label": "Novaroma Winter Light Swapped",
+        "uiTheme": "vs",
+        "path": "./themes/novaroma-winter-light-swapped-color-theme.json"
+      },
+      {
+        "label": "Novaroma Standard Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/novaroma-standard-dark-color-theme.json"
+      },
+      {
+        "label": "Novaroma Standard Dark Swapped",
+        "uiTheme": "vs-dark",
+        "path": "./themes/novaroma-standard-dark-swapped-color-theme.json"
+      },
+      {
+        "label": "Novaroma Frühling Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/novaroma-fruehling-dark-color-theme.json"
+      },
+      {
+        "label": "Novaroma Frühling Dark Swapped",
+        "uiTheme": "vs-dark",
+        "path": "./themes/novaroma-fruehling-dark-swapped-color-theme.json"
+      },
+      {
+        "label": "Novaroma Sommer Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/novaroma-sommer-dark-color-theme.json"
+      },
+      {
+        "label": "Novaroma Sommer Dark Swapped",
+        "uiTheme": "vs-dark",
+        "path": "./themes/novaroma-sommer-dark-swapped-color-theme.json"
+      },
+      {
+        "label": "Novaroma Herbst Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/novaroma-herbst-dark-color-theme.json"
+      },
+      {
+        "label": "Novaroma Herbst Dark Swapped",
+        "uiTheme": "vs-dark",
+        "path": "./themes/novaroma-herbst-dark-swapped-color-theme.json"
+      },
+      {
+        "label": "Novaroma Winter Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/novaroma-winter-dark-color-theme.json"
+      },
+      {
+        "label": "Novaroma Winter Dark Swapped",
+        "uiTheme": "vs-dark",
+        "path": "./themes/novaroma-winter-dark-swapped-color-theme.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "novaroma-icons",
+        "label": "Novaroma Icons",
+        "path": "./icons/novaroma-icon-theme.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "novaroma.menu",
+        "title": "Open Menu",
+        "category": "Novaroma"
+      },
+      {
+        "command": "novaroma.applyProfile",
+        "title": "Apply Profile…",
+        "category": "Novaroma"
+      },
+      {
+        "command": "novaroma.resetProfile",
+        "title": "Undo Last Profile",
+        "category": "Novaroma"
+      },
+      {
+        "command": "novaroma.chooseSeason",
+        "title": "Choose Season…",
+        "category": "Novaroma"
+      },
+      {
+        "command": "novaroma.chooseAppearance",
+        "title": "Choose Light / Dark…",
+        "category": "Novaroma"
+      },
+      {
+        "command": "novaroma.toggleSwapped",
+        "title": "Toggle Swapped Colours",
+        "category": "Novaroma"
+      },
+      {
+        "command": "novaroma.apply",
+        "title": "Apply Theme Now",
+        "category": "Novaroma"
+      },
+      {
+        "command": "novaroma.toggleTerminalPrompt",
+        "title": "Toggle Novaroma Terminal Prompt (Starship)",
+        "category": "Novaroma"
+      },
+      {
+        "command": "novaroma.openPromptConfig",
+        "title": "Open Terminal Prompt Config",
+        "category": "Novaroma"
+      }
+    ],
+    "configuration": {
+      "title": "Novaroma",
+      "properties": {
+        "novaroma.season": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "standard",
+            "fruehling",
+            "sommer",
+            "herbst",
+            "winter"
+          ],
+          "enumDescriptions": [
+            "Follow the calendar: Frühling March–May, Sommer June–August, Herbst September–November, Winter December–February.",
+            "Standard — the live novaroma-homelab.uk colours.",
+            "Frühling — blush ground, cherry-blossom highlight.",
+            "Sommer — sunlit ground, sun highlight.",
+            "Herbst — warm paper ground, amber highlight.",
+            "Winter — frost ground, ice highlight."
+          ],
+          "default": "auto",
+          "description": "Which Novaroma season to use."
+        },
+        "novaroma.appearance": {
+          "type": "string",
+          "enum": [
+            "system",
+            "light",
+            "dark"
+          ],
+          "enumDescriptions": [
+            "Follow the operating system's light/dark setting.",
+            "Always use the light theme.",
+            "Always use the dark theme."
+          ],
+          "default": "system",
+          "description": "Light, dark or follow the system."
+        },
+        "novaroma.variant": {
+          "type": "string",
+          "enum": [
+            "normal",
+            "swapped"
+          ],
+          "enumDescriptions": [
+            "Chrome in accent with main ink (cream with burgundy in light).",
+            "Main and accent swapped (burgundy with cream in light)."
+          ],
+          "default": "normal",
+          "description": "Normal or swapped chrome colours."
+        },
+        "novaroma.autoApply": {
+          "type": "boolean",
+          "default": true,
+          "description": "While a Novaroma theme is active, switch automatically when the season changes and when these settings change."
+        },
+        "novaroma.setIconTheme": {
+          "type": "boolean",
+          "default": true,
+          "description": "Also switch the file icon theme to Novaroma Icons when applying."
+        },
+        "novaroma.showStatusBarItem": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the current season in the status bar while a Novaroma theme is active."
+        },
+        "novaroma.terminalPrompt": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use the Novaroma Starship prompt in VS Code's integrated terminal (sets STARSHIP_CONFIG for new terminals). Requires Starship."
+        },
+        "novaroma.setProductIconTheme": {
+          "type": "boolean",
+          "default": true,
+          "description": "Also switch the product icon theme to Novaroma Product Icons when applying."
+        }
+      }
+    },
+    "productIconThemes": [
+      {
+        "id": "novaroma-product-icons",
+        "label": "Novaroma Product Icons",
+        "path": "./product-icons/novaroma-product-icon-theme.json"
+      }
+    ],
+    "markdown.previewStyles": [
+      "./media/markdown.css"
+    ]
+  },
+  "scripts": {
+    "build": "python3 build/build.py",
+    "package": "npx @vscode/vsce package --no-rewrite-relative-links"
+  },
+  "bugs": {
+    "url": "https://github.com/JestingDart4369/novaroma-vscode/issues"
+  }
+}

@@ -1,0 +1,6 @@
+build/**
+**/__pycache__/**
+*.vsix
+.gitignore
+product-icons/svg/**
+.github/**
