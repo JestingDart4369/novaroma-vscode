@@ -1,7 +1,7 @@
 {
   "name": "novaroma",
   "displayName": "Novaroma",
-  "description": "Nova Roma colour, file icon and product icon themes for VS Code: Standard, Frühling, Sommer, Herbst and Winter in light and dark, normal and swapped, with automatic seasons, profiles, Markdown preview styling and a terminal prompt.",
+  "description": "Nova Roma colour, file icon and product icon themes for VS Code: Standard, Frühling, Sommer, Herbst and Winter in light and dark, normal and swapped, with automatic seasons, profiles and Markdown preview styling.",
   "version": "2.1.2",
   "publisher": "JestingDart4369",
   "license": "MIT",
@@ -32,8 +32,7 @@
     "light",
     "dark",
     "product icon theme",
-    "markdown",
-    "starship"
+    "markdown"
   ],
   "main": "./src/extension.js",
   "activationEvents": [
@@ -184,16 +183,6 @@
         "command": "novaroma.apply",
         "title": "Apply Theme Now",
         "category": "Novaroma"
-      },
-      {
-        "command": "novaroma.toggleTerminalPrompt",
-        "title": "Toggle Novaroma Terminal Prompt (Starship)",
-        "category": "Novaroma"
-      },
-      {
-        "command": "novaroma.openPromptConfig",
-        "title": "Open Terminal Prompt Config",
-        "category": "Novaroma"
       }
     ],
     "configuration": {
@@ -262,11 +251,6 @@
           "type": "boolean",
           "default": true,
           "description": "Show the current season in the status bar while a Novaroma theme is active."
-        },
-        "novaroma.terminalPrompt": {
-          "type": "boolean",
-          "default": false,
-          "description": "Use the Novaroma Starship prompt in VS Code's integrated terminal (sets STARSHIP_CONFIG for new terminals). Requires Starship."
         },
         "novaroma.setProductIconTheme": {
           "type": "boolean",
