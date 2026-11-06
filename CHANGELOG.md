@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.0
+
+- Markdown preview understands Obsidian syntax: callouts (`> [!note]` with all Obsidian types and aliases), the alternate checkboxes (`- [>]`, `- [!]`, `- [?]`, `- [3]` and the rest), `#tags` as pills, `==highlights==`, hidden `%%comments%%` and footnotes. Wiki-links and embeds are left as text.
+
 ## 2.1.3
 
 - Markdown preview: task lists (`- [ ]` and `- [x]`) now show as checkboxes instead of plain text.

@@ -68,6 +68,19 @@ Choose it with **Preferences: Product Icon Theme**; **Novaroma: Apply Theme Now*
 
 While a Novaroma colour theme is active, the Markdown preview uses the Nova Roma web style: a 2.5rem `h1` with the 2px `main` rule under it, `section-title` `h2`, uppercase eyebrow `h4`, 1.7 line height, outlined code blocks, blockquotes and tables with soft `accent` lines and rounded corners, inline code as a cream chip, list markers in `season-ink`, `<mark>` in the season fill and pill-shaped `<kbd>`. Colours come from the active theme, so every season and light/dark variant applies automatically. With other colour themes the preview is unchanged.
 
+### Obsidian syntax
+
+The preview also understands the Obsidian syntax used in an Obsidian vault, so notes look the same in VS Code:
+
+- **Callouts**: `> [!note] Title` with every Obsidian type and alias (note, abstract/summary/tldr, info, todo, tip/hint/important, success/check/done, question/help/faq, warning/caution/attention, failure/fail/missing, danger/error, bug, example, quote/cite). Each type has its own line icon and season colour. The fold markers `+` and `-` are accepted; callouts are always shown open.
+- **Checkboxes**: `- [ ]` and `- [x]`, plus the alternate statuses `>` rescheduled, `<` scheduled, `!` important, `-` cancelled, `/` in progress, `?` question, `*` star, `n` note, `l` location, `i` information, `I` idea, `S` amount, `p` pro, `c` con, `b` bookmark, `"` quote, `u` up, `d` down, `w` win, `k` key, `f` fire and `0`–`9` speech bubbles. They are display-only.
+- **Tags**: `#tag` and `#nested/tag` as hairline pills.
+- **Highlights**: `==text==`.
+- **Comments**: `%%hidden%%`, inline or across several lines, are not shown.
+- **Footnotes**: `[^1]` with the notes collected at the end.
+
+LaTeX (`$…$` and `$$…$$`) is rendered by VS Code itself. Wiki-links (`[[Note]]`) and embeds (`![[file]]`) are left as text.
+
 ![Markdown preview in Herbst Light and Winter Dark](images/markdown.png)
 
 ## Seasons, light/dark and swapped
