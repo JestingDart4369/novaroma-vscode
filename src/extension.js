@@ -2,6 +2,7 @@
 "use strict";
 const vscode = require("vscode");
 const presets = require("./presets.json");
+const { taskLists } = require("./tasklists");
 
 const SEASONS = [
   { id: "standard", name: "Standard", detail: "The live novaroma-homelab.uk colours" },
@@ -329,6 +330,9 @@ function activate(context) {
   context.subscriptions.push({ dispose: () => clearInterval(timer) });
 
   startup();
+
+  // Markdown preview: render "- [ ]" / "- [x]" as checkboxes.
+  return { extendMarkdownIt: (md) => taskLists(md) };
 }
 
 function deactivate() {}

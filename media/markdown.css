@@ -173,3 +173,45 @@ body[data-vscode-theme-id^="Novaroma"] kbd {
   body[data-vscode-theme-name^="Novaroma"] a,
   body[data-vscode-theme-id^="Novaroma"] a { transition: none; }
 }
+
+/* Task lists (- [ ] / - [x]), rendered by the Novaroma markdown-it plugin.
+   Layout applies in every theme; colours follow the Novaroma theme when it is active. */
+.contains-task-list { padding-left: 1.4em; }
+.task-list-item { list-style: none; }
+.task-list-item .contains-task-list { padding-left: 1.6em; }
+.task-list-item-checkbox {
+  margin: 0 0.5em 0 -1.4em;
+  vertical-align: -0.1em;
+  width: 1em;
+  height: 1em;
+}
+body[data-vscode-theme-name^="Novaroma"] .task-list-item.checked,
+body[data-vscode-theme-id^="Novaroma"] .task-list-item.checked { color: var(--nr-muted); }
+body[data-vscode-theme-name^="Novaroma"] .task-list-item-checkbox,
+body[data-vscode-theme-id^="Novaroma"] .task-list-item-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  box-sizing: border-box;
+  border: 2px solid var(--nr-main);
+  border-radius: 4px;
+  background: transparent;
+  opacity: 1;
+}
+body[data-vscode-theme-name^="Novaroma"] .task-list-item-checkbox:checked,
+body[data-vscode-theme-id^="Novaroma"] .task-list-item-checkbox:checked {
+  background: var(--nr-ink);
+  border-color: var(--nr-ink);
+}
+body[data-vscode-theme-name^="Novaroma"] .task-list-item-checkbox:checked::after,
+body[data-vscode-theme-id^="Novaroma"] .task-list-item-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  left: 0.26em;
+  top: 0.06em;
+  width: 0.22em;
+  height: 0.48em;
+  border: solid var(--nr-bg);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
