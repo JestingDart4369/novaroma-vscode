@@ -116,7 +116,7 @@ The same four profiles also come as real VS Code profiles in the `profiles` fold
 
 ## Install
 
-In VS Code open the Extensions view, click **…**, choose **Install from VSIX…** and select `novaroma-2.1.1.vsix`. Then run **Novaroma: Apply Theme Now**, or choose a theme with **Preferences: Color Theme** and **Novaroma Icons** with **Preferences: File Icon Theme**.
+In VS Code open the Extensions view, click **…**, choose **Install from VSIX…** and select the `.vsix` from the latest GitHub release. Then run **Novaroma: Apply Theme Now**, or choose a theme with **Preferences: Color Theme** and **Novaroma Icons** with **Preferences: File Icon Theme**.
 
 ## Build from source
 

@@ -1,0 +1,105 @@
+# Checks every change and builds a test VSIX.
+#   - Pull requests into main or dev: build and check (required by the main ruleset as "build").
+#   - Pull requests into main: the version in package.json must be new (no tag v<version> yet).
+#   - Push to dev: also refreshes the "dev" pre-release on GitHub with the newest test VSIX.
+name: CI
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [dev]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check extension code
+        run: node --check src/extension.js
+
+      - name: Check JSON files
+        run: |
+          for f in package.json src/presets.json themes/*.json icons/novaroma-icon-theme.json product-icons/novaroma-product-icon-theme.json; do
+            node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" || { echo "Invalid JSON: $f"; exit 1; }
+          done
+
+      - name: Check theme contrast (WCAG AA)
+        run: |
+          out=$(python3 build/check.py)
+          echo "$out"
+          echo "$out" | grep -q "failures: 0"
+
+      - name: Check that every icon file exists
+        run: |
+          node -e '
+            const fs=require("fs");
+            for (const f of ["icons/novaroma-icon-theme.json"]) {
+              const t=JSON.parse(fs.readFileSync(f,"utf8"));
+              for (const [k,v] of Object.entries(t.iconDefinitions)) {
+                if (!fs.existsSync("icons/"+v.iconPath.replace("./",""))) { console.error("missing", k, v.iconPath); process.exit(1); }
+              }
+            }
+            if (!fs.existsSync("product-icons/novaroma-product-icons.woff")) { console.error("missing product icon font"); process.exit(1); }
+          '
+
+      - name: Version must be new (pull requests into main)
+        if: github.event_name == 'pull_request' && github.base_ref == 'main'
+        run: |
+          v=$(node -p "require('./package.json').version")
+          if git rev-parse -q --verify "refs/tags/v$v" >/dev/null; then
+            echo "::error::Version $v is already released. Raise \"version\" in package.json and add a CHANGELOG entry."
+            exit 1
+          fi
+          grep -q "^## $v" CHANGELOG.md || { echo "::error::CHANGELOG.md has no '## $v' section."; exit 1; }
+
+      - name: Package VSIX
+        run: npx --yes @vscode/vsce@3 package --out novaroma-test.vsix
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: novaroma-vsix
+          path: novaroma-test.vsix
+          retention-days: 30
+
+  dev-prerelease:
+    name: dev pre-release
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: novaroma-vsix
+
+      - name: Replace the "dev" pre-release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release delete dev --yes --cleanup-tag 2>/dev/null || true
+          gh release create dev novaroma-test.vsix \
+            --target "${GITHUB_SHA}" --prerelease \
+            --title "Novaroma dev build" \
+            --notes "Test build of the dev branch at ${GITHUB_SHA::7}. Install with Extensions → … → Install from VSIX. Not on the Marketplace."
