@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.2
+
+- Fixed the file icon theme: icon paths are now relative to the icon theme file, so the icons load in VS Code.
+- Releases are built and published by GitHub Actions; `main` is protected and `dev` builds test versions.
+
 ## 2.1.1
 
 - Applying a theme now always sets the preferred light colour theme to the light version and the preferred dark colour theme to the dark version, also when light or dark is fixed.

@@ -180,7 +180,8 @@ def build(out):
             path = f"icons/{v}/{key}.svg"
             with open(f"{out}/{path}", "w") as f:
                 f.write(maker(v))
-            defs[key + ("" if v == "dark" else "_l")] = {"iconPath": "./" + path}
+            # relative to icons/novaroma-icon-theme.json, which is how VS Code resolves it
+            defs[key + ("" if v == "dark" else "_l")] = {"iconPath": f"./{v}/{key}.svg"}
 
     add("_file", lambda v: doc_icon(v, g_lines, "muted"))
     add("_folder", lambda v: folder_icon(v))
