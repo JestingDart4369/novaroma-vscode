@@ -1,7 +1,8 @@
 # Checks every change and builds a test VSIX.
 #   - Pull requests into main or dev: build and check (required by the main ruleset as "build").
 #   - Pull requests into main: the version in package.json must be new (no tag v<version> yet).
-#   - Push to dev: also refreshes the "dev" pre-release on GitHub with the newest test VSIX.
+#   - Push to dev: also refreshes the "dev-build" pre-release on GitHub with the newest test VSIX.
+#     (Not named "dev", so the tag never clashes with the dev branch.)
 name: CI
 
 on:
@@ -93,13 +94,13 @@ jobs:
         with:
           name: novaroma-vsix
 
-      - name: Replace the "dev" pre-release
+      - name: Replace the "dev-build" pre-release
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          gh release delete dev --yes --cleanup-tag 2>/dev/null || true
-          gh release create dev novaroma-test.vsix \
+          gh release delete dev-build --yes --cleanup-tag 2>/dev/null || true
+          gh release create dev-build novaroma-test.vsix \
             --target "${GITHUB_SHA}" --prerelease \
             --title "Novaroma dev build" \
             --notes "Test build of the dev branch at ${GITHUB_SHA::7}. Install with Extensions → … → Install from VSIX. Not on the Marketplace."
