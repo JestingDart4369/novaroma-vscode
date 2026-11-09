@@ -44,11 +44,11 @@ jobs:
 
       - name: Package VSIX
         if: steps.version.outputs.new == 'true'
-        run: npx --yes @vscode/vsce@3 package --out "novaroma-${{ steps.version.outputs.version }}.vsix"
+        run: npx --yes @vscode/vsce@4.1.0 package --out "novaroma-${{ steps.version.outputs.version }}.vsix"
 
       - name: Publish to the Marketplace
         if: steps.version.outputs.new == 'true'
-        run: npx --yes @vscode/vsce@3 publish --oidc --packagePath "novaroma-${{ steps.version.outputs.version }}.vsix"
+        run: npx --yes @vscode/vsce@4.1.0 publish --oidc --packagePath "novaroma-${{ steps.version.outputs.version }}.vsix"
 
       - name: Tag and GitHub release
         if: steps.version.outputs.new == 'true'

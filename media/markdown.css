@@ -1,13 +1,13 @@
 /* Novaroma Markdown preview — the Nova Roma web style (outlined boxes, pills, no shadows).
    Only active while a Novaroma colour theme is selected. Colours come from the active theme,
-   so every season and light/dark variant applies automatically:
+   so every palette and light/dark variant applies automatically:
      --nr-main   editor.foreground          (main)
      --nr-text   editorLineNumber.activeForeground (text, headings)
      --nr-muted  descriptionForeground      (muted)
      --nr-accent widget.border              (accent, outlines)
-     --nr-ink    tab.activeBorderTop        (season-ink)
-     --nr-season statusBar.background       (season fill)
-     --nr-on-season statusBar.foreground    (ink on season) */
+     --nr-ink    tab.activeBorderTop        (palette-ink)
+     --nr-palette statusBar.background       (palette fill)
+     --nr-on-palette statusBar.foreground    (ink on palette) */
 
 body[data-vscode-theme-name^="Novaroma"],
 body[data-vscode-theme-id^="Novaroma"] {
@@ -17,8 +17,8 @@ body[data-vscode-theme-id^="Novaroma"] {
   --nr-muted: var(--vscode-descriptionForeground);
   --nr-accent: var(--vscode-widget-border);
   --nr-ink: var(--vscode-tab-activeBorderTop);
-  --nr-season: var(--vscode-statusBar-background);
-  --nr-on-season: var(--vscode-statusBar-foreground);
+  --nr-palette: var(--vscode-statusBar-background);
+  --nr-on-palette: var(--vscode-statusBar-foreground);
   --nr-code-bg: var(--vscode-textCodeBlock-background);
   --nr-focus: var(--vscode-focusBorder);
 
@@ -101,7 +101,7 @@ body[data-vscode-theme-id^="Novaroma"] pre {
   box-shadow: none;
 }
 
-/* blockquote: outlined block with a season-ink edge */
+/* blockquote: outlined block with a palette-ink edge */
 body[data-vscode-theme-name^="Novaroma"] blockquote,
 body[data-vscode-theme-id^="Novaroma"] blockquote {
   background: transparent;
@@ -146,11 +146,11 @@ body[data-vscode-theme-id^="Novaroma"] hr {
   margin: 2rem 0;
 }
 
-/* highlight: season fill with its ink */
+/* highlight: palette fill with its ink */
 body[data-vscode-theme-name^="Novaroma"] mark,
 body[data-vscode-theme-id^="Novaroma"] mark {
-  background: var(--nr-season);
-  color: var(--nr-on-season);
+  background: var(--nr-palette);
+  color: var(--nr-on-palette);
   border-radius: 4px;
   padding: 0 0.2em;
 }
@@ -218,7 +218,7 @@ body[data-vscode-theme-id^="Novaroma"] .task-list-item-checkbox:checked::after {
 
 /* ---- Obsidian syntax ---------------------------------------------------------------------
    Layout works in every theme. Colours use the theme's terminal palette, which in Novaroma
-   holds the season inks (blue = Winter, red = Frühling, green = sv-forest, gold = Sommer,
+   holds the palette inks (blue = Winter, red = Frühling, green = sv-forest, gold = Sommer,
    amber = Herbst), so they follow light/dark automatically. */
 
 :root {
@@ -309,7 +309,7 @@ blockquote.callout[data-callout="quote"] { --c: var(--nr-c-muted); }
   color: var(--nr-c-violet);
 }
 
-/* highlights (Novaroma themes use the season fill from the rule further up) */
+/* highlights (Novaroma themes use the palette fill from the rule further up) */
 body:not([data-vscode-theme-name^="Novaroma"]) mark {
   background: color-mix(in srgb, var(--nr-c-gold) 30%, transparent);
   color: inherit;

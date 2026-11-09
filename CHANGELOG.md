@@ -1,10 +1,17 @@
 # Changelog
 
+## 2.2.3
+
+- First version published automatically from GitHub with Trusted Publishing. Same content as 2.2.2, the first version on the Marketplace.
+
 ## 2.2.2
 
 - Smaller, cleaner package: the build scripts are no longer listed in `package.json`, and the importable `.code-profile` files are only in the GitHub repository, not inside the extension.
 - "obsidian" is no longer a search keyword; the README still describes the Obsidian syntax support.
 - Licence holder is now JestingDart4369.
+- The extension description no longer names VS Code.
+- The five colour sets (Standard, Frühling, Sommer, Herbst, Winter) are now called "palettes" everywhere: the command **Novaroma: Choose Palette…** and the setting `novaroma.palette` replace the old command and setting. Set `novaroma.palette` again if you had chosen a fixed one; `auto` (follow the calendar) is still the default.
+- GitHub Actions use vsce 4.1.0, the first version with `--oidc` for Trusted Publishing.
 - The preview screenshots are no longer inside the extension (the Marketplace page loads them from GitHub); only the logo is packaged.
 
 ## 2.2.1
@@ -39,10 +46,10 @@
 ## 2.0.0
 
 - Renamed the extension to Novaroma.
-- Reworked colour roles: declarations in `text`, keywords in `season-ink`, control flow bold, built-in types italic, terminal ANSI colours, git, diff, debug and testing colours.
+- Reworked colour roles: declarations in `text`, keywords in `palette-ink`, control flow bold, built-in types italic, terminal ANSI colours, git, diff, debug and testing colours.
 - Every text pair checked to at least 4.5:1; git decorations on cream chrome use deeper system tokens.
 - New Novaroma Icons file icon theme.
-- Automatic season switching, light/dark and swapped commands, status bar item.
+- Automatic palette switching, light/dark and swapped commands, status bar item.
 - Profiles: Standard, Focus, Presentation and Compact, with undo, plus importable .code-profile files.
 - Extension icon and preview images.
 

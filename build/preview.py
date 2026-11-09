@@ -220,7 +220,7 @@ def main():
             g.paste(im, (x, y + 32), im)
         slug = sname.lower().replace("ü", "ue")
         g = g.resize((g.width // 2 * 2 * 3 // 4, g.height * 3 // 4), Image.LANCZOS)
-        g.save(f"{out}/season-{slug}.png", optimize=True)
+        g.save(f"{out}/palette-{slug}.png", optimize=True)
 
     # icon sheet
     keys = ["_root_open", "_folder", "_folder_open", "folder_src", "folder_git", "folder_vscode", "folder_docs",

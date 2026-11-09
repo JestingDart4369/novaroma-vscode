@@ -15,7 +15,7 @@ Novaroma does not collect, store, send or share any personal data or usage data.
 
 Novaroma only uses the VS Code extension API, and only for these purposes:
 
-- **VS Code settings**: when you run a Novaroma command (apply theme, choose season, light/dark, swapped colours, apply profile), it changes the related VS Code settings, such as `workbench.colorTheme`, `workbench.iconTheme`, `workbench.productIconTheme` and the editor settings listed for each profile in the README. While a Novaroma theme is in use and `novaroma.autoApply` is on, it also switches to the next season's theme when the season changes. Turn `novaroma.autoApply` off to prevent this.
+- **VS Code settings**: when you run a Novaroma command (apply theme, choose palette, light/dark, swapped colours, apply profile), it changes the related VS Code settings, such as `workbench.colorTheme`, `workbench.iconTheme`, `workbench.productIconTheme` and the editor settings listed for each profile in the README. While a Novaroma theme is in use and `novaroma.autoApply` is on, it also switches to the next palette's theme on 1 March, 1 June, 1 September and 1 December. Turn `novaroma.autoApply` off to prevent this.
 - **Local extension storage**: it keeps two small values in VS Code's own storage for the extension, which never leaves your computer: the settings a profile replaced (so **Novaroma: Undo Last Profile** can restore them) and the name of the theme it last applied.
 
 Uninstalling the extension removes this storage. The VS Code settings it changed stay as they are, like any setting you changed yourself.
