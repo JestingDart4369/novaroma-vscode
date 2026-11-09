@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.1
+
+- Added a privacy statement (PRIVACY.md and a README section): Novaroma collects no data and makes no network requests.
+- Added SUPPORT.md with where to ask questions and report bugs.
+
 ## 2.2.0
 
 - Markdown preview understands Obsidian syntax: callouts (`> [!note]` with all Obsidian types and aliases), the alternate checkboxes (`- [>]`, `- [!]`, `- [?]`, `- [3]` and the rest), `#tags` as pills, `==highlights==`, hidden `%%comments%%` and footnotes. Wiki-links and embeds are left as text.

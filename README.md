@@ -120,6 +120,14 @@ Before a profile is applied, the settings it changes are saved; **Novaroma: Undo
 
 The same four profiles also come as real VS Code profiles in the `profiles` folder of the source (`Novaroma-Focus.code-profile` and so on). Import one with **Profiles: Import Profile…**. VS Code installs extensions per profile, so install the Novaroma VSIX again inside the new profile after importing it.
 
+## Privacy
+
+Novaroma collects no data. It has no telemetry, makes no network requests, does not read or upload your files and does not start processes. It only changes VS Code settings when you run one of its commands, or when the season changes while `novaroma.autoApply` is on. Details are in [PRIVACY.md](PRIVACY.md).
+
+## Support
+
+Questions, bugs and ideas go to [GitHub Issues](https://github.com/JestingDart4369/novaroma-vscode/issues). See [SUPPORT.md](SUPPORT.md) for what to include.
+
 ## Install
 
 In VS Code open the Extensions view, click **…**, choose **Install from VSIX…** and select the `.vsix` from the latest GitHub release. Then run **Novaroma: Apply Theme Now**, or choose a theme with **Preferences: Color Theme** and **Novaroma Icons** with **Preferences: File Icon Theme**.
