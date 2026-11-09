@@ -1,9 +1,10 @@
 // Novaroma — season, light/dark and profile switching for the Novaroma themes.
 "use strict";
 const vscode = require("vscode");
-const fs = require("fs");
-const path = require("path");
 const presets = require("./presets.json");
+const { taskLists } = require("./tasklists");
+const { obsidian } = require("./obsidian");
+const footnotes = require("./vendor/markdown-it-footnote");
 
 const SEASONS = [
   { id: "standard", name: "Standard", detail: "The live novaroma-homelab.uk colours" },
@@ -271,7 +272,6 @@ async function menu(context) {
     { label: `$(arrow-swap) Colours: ${t.variant}`, description: "toggle swapped", run: toggleSwapped },
     { label: "$(account) Apply profile…", run: () => applyProfile(context) },
     { label: "$(discard) Undo last profile", run: () => resetProfile(context) },
-    { label: `$(terminal) Terminal prompt: ${cfg().get("terminalPrompt", false) ? "on" : "off"}`, description: "Starship", run: toggleTerminalPrompt },
   ];
   const pick = await vscode.window.showQuickPick(items, { title: "Novaroma" });
   if (pick) await pick.run();
@@ -293,50 +293,6 @@ async function startup() {
   updateStatus();
 }
 
-// ---- terminal prompt (Starship) -------------------------------------------------------
-const ENV_KEY = { darwin: "osx", linux: "linux", win32: "windows" }[process.platform] || "linux";
-
-async function syncTerminalPrompt() {
-  const term = vscode.workspace.getConfiguration("terminal.integrated");
-  const key = `env.${ENV_KEY}`;
-  const env = { ...(term.inspect(key).globalValue || {}) };
-  const want = cfg().get("terminalPrompt", false);
-  const dir = ctx.globalStorageUri.fsPath;
-  const target = path.join(dir, "starship.toml");
-  if (want) {
-    fs.mkdirSync(dir, { recursive: true });
-    fs.copyFileSync(path.join(ctx.extensionPath, "terminal", "starship.toml"), target);
-    if (env.STARSHIP_CONFIG === target) return;
-    env.STARSHIP_CONFIG = target;
-  } else {
-    if (env.STARSHIP_CONFIG !== target) return;
-    delete env.STARSHIP_CONFIG;
-  }
-  await term.update(key, Object.keys(env).length ? env : undefined, G);
-}
-
-async function toggleTerminalPrompt() {
-  const on = !cfg().get("terminalPrompt", false);
-  await cfg().update("terminalPrompt", on, G);
-  await syncTerminalPrompt();
-  if (on) {
-    const pick = await vscode.window.showInformationMessage(
-      "Novaroma prompt is on for new VS Code terminals. It needs Starship installed and started in your shell.",
-      "How to install Starship",
-      "Open prompt config"
-    );
-    if (pick === "How to install Starship") vscode.env.openExternal(vscode.Uri.parse("https://starship.rs/guide/#%F0%9F%9A%80-installation"));
-    if (pick === "Open prompt config") openPromptConfig();
-  } else {
-    vscode.window.showInformationMessage("Novaroma prompt is off for new VS Code terminals.");
-  }
-}
-
-async function openPromptConfig() {
-  const doc = await vscode.workspace.openTextDocument(path.join(ctx.extensionPath, "terminal", "starship.toml"));
-  vscode.window.showTextDocument(doc, { preview: true });
-}
-
 function activate(context) {
   ctx = context;
   const reg = (id, fn) => context.subscriptions.push(vscode.commands.registerCommand(id, fn));
@@ -347,8 +303,6 @@ function activate(context) {
   reg("novaroma.chooseAppearance", chooseAppearance);
   reg("novaroma.toggleSwapped", toggleSwapped);
   reg("novaroma.apply", apply);
-  reg("novaroma.toggleTerminalPrompt", toggleTerminalPrompt);
-  reg("novaroma.openPromptConfig", openPromptConfig);
 
   statusItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
   statusItem.command = "novaroma.menu";
@@ -378,7 +332,9 @@ function activate(context) {
   context.subscriptions.push({ dispose: () => clearInterval(timer) });
 
   startup();
-  syncTerminalPrompt().catch(() => {});
+
+  // Markdown preview: task lists, Obsidian callouts, tags, highlights, comments and footnotes.
+  return { extendMarkdownIt: (md) => taskLists(obsidian(md.use(footnotes))) };
 }
 
 function deactivate() {}

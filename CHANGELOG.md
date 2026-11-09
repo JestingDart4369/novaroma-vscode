@@ -1,5 +1,31 @@
 # Changelog
 
+## 2.2.2
+
+- Smaller, cleaner package: the build scripts are no longer listed in `package.json`, and the importable `.code-profile` files are only in the GitHub repository, not inside the extension.
+- "obsidian" is no longer a search keyword; the README still describes the Obsidian syntax support.
+- Licence holder is now JestingDart4369.
+- The preview screenshots are no longer inside the extension (the Marketplace page loads them from GitHub); only the logo is packaged.
+
+## 2.2.1
+
+- Added a privacy statement (PRIVACY.md and a README section): Novaroma collects no data and makes no network requests.
+- Added SUPPORT.md with where to ask questions and report bugs.
+
+## 2.2.0
+
+- Markdown preview understands Obsidian syntax: callouts (`> [!note]` with all Obsidian types and aliases), the alternate checkboxes (`- [>]`, `- [!]`, `- [?]`, `- [3]` and the rest), `#tags` as pills, `==highlights==`, hidden `%%comments%%` and footnotes. Wiki-links and embeds are left as text.
+
+## 2.1.3
+
+- Markdown preview: task lists (`- [ ]` and `- [x]`) now show as checkboxes instead of plain text.
+
+## 2.1.2
+
+- Fixed the file icon theme: icon paths are now relative to the icon theme file, so the icons load in VS Code.
+- Removed the terminal prompt (Starship) feature; the extension no longer changes terminal settings or writes files.
+- Releases are built and published by GitHub Actions; `main` is protected and `dev` builds test versions.
+
 ## 2.1.1
 
 - Applying a theme now always sets the preferred light colour theme to the light version and the preferred dark colour theme to the dark version, also when light or dark is fixed.

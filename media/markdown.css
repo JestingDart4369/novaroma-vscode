@@ -173,3 +173,151 @@ body[data-vscode-theme-id^="Novaroma"] kbd {
   body[data-vscode-theme-name^="Novaroma"] a,
   body[data-vscode-theme-id^="Novaroma"] a { transition: none; }
 }
+
+/* Task lists (- [ ] / - [x]), rendered by the Novaroma markdown-it plugin.
+   Layout applies in every theme; colours follow the Novaroma theme when it is active. */
+.contains-task-list { padding-left: 1.4em; }
+.task-list-item { list-style: none; }
+.task-list-item .contains-task-list { padding-left: 1.6em; }
+.task-list-item-checkbox {
+  margin: 0 0.5em 0 -1.4em;
+  vertical-align: -0.1em;
+  width: 1em;
+  height: 1em;
+}
+body[data-vscode-theme-name^="Novaroma"] .task-list-item.checked,
+body[data-vscode-theme-id^="Novaroma"] .task-list-item.checked { color: var(--nr-muted); }
+body[data-vscode-theme-name^="Novaroma"] .task-list-item-checkbox,
+body[data-vscode-theme-id^="Novaroma"] .task-list-item-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  box-sizing: border-box;
+  border: 2px solid var(--nr-main);
+  border-radius: 4px;
+  background: transparent;
+  opacity: 1;
+}
+body[data-vscode-theme-name^="Novaroma"] .task-list-item-checkbox:checked,
+body[data-vscode-theme-id^="Novaroma"] .task-list-item-checkbox:checked {
+  background: var(--nr-ink);
+  border-color: var(--nr-ink);
+}
+body[data-vscode-theme-name^="Novaroma"] .task-list-item-checkbox:checked::after,
+body[data-vscode-theme-id^="Novaroma"] .task-list-item-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  left: 0.26em;
+  top: 0.06em;
+  width: 0.22em;
+  height: 0.48em;
+  border: solid var(--nr-bg);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* ---- Obsidian syntax ---------------------------------------------------------------------
+   Layout works in every theme. Colours use the theme's terminal palette, which in Novaroma
+   holds the season inks (blue = Winter, red = Frühling, green = sv-forest, gold = Sommer,
+   amber = Herbst), so they follow light/dark automatically. */
+
+:root {
+  --nr-c-blue: var(--vscode-terminal-ansiBlue);
+  --nr-c-red: var(--vscode-terminal-ansiRed);
+  --nr-c-green: var(--vscode-terminal-ansiGreen);
+  --nr-c-gold: var(--vscode-terminal-ansiYellow);
+  --nr-c-amber: var(--vscode-terminal-ansiBrightYellow);
+  --nr-c-cyan: var(--vscode-terminal-ansiCyan);
+  --nr-c-violet: var(--vscode-terminal-ansiMagenta);
+  --nr-c-muted: var(--vscode-descriptionForeground);
+}
+
+/* callouts: outlined box in the type colour, faint fill, icon + bold title */
+blockquote.callout,
+body[data-vscode-theme-name^="Novaroma"] blockquote.callout,
+body[data-vscode-theme-id^="Novaroma"] blockquote.callout {
+  border: 2px solid color-mix(in srgb, var(--c) 55%, transparent);
+  border-left: 4px solid var(--c);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--c) 7%, transparent);
+  padding: 0.6rem 1rem;
+  margin: 1rem 0;
+  color: inherit;
+}
+blockquote.callout > :last-child { margin-bottom: 0; }
+.callout-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--c);
+  font-weight: 700;
+  margin: 0.1rem 0 0.3rem;
+}
+.callout-title:last-child { margin-bottom: 0.1rem; }
+.callout-icon { flex: none; }
+.callout-title-inner > p { margin: 0; }
+blockquote.callout { --c: var(--nr-c-blue); }
+blockquote.callout[data-callout="note"],
+blockquote.callout[data-callout="info"],
+blockquote.callout[data-callout="todo"] { --c: var(--nr-c-blue); }
+blockquote.callout[data-callout="abstract"],
+blockquote.callout[data-callout="tip"] { --c: var(--nr-c-cyan); }
+blockquote.callout[data-callout="success"] { --c: var(--nr-c-green); }
+blockquote.callout[data-callout="question"] { --c: var(--nr-c-gold); }
+blockquote.callout[data-callout="warning"] { --c: var(--nr-c-amber); }
+blockquote.callout[data-callout="failure"],
+blockquote.callout[data-callout="danger"],
+blockquote.callout[data-callout="bug"] { --c: var(--nr-c-red); }
+blockquote.callout[data-callout="example"] { --c: var(--nr-c-violet); }
+blockquote.callout[data-callout="quote"] { --c: var(--nr-c-muted); }
+
+/* alternate checkboxes: same 2px box as a checkbox, glyph in the status colour */
+.task-icon {
+  --c: var(--nr-c-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 1.15em;
+  height: 1.15em;
+  margin: 0 0.45em 0 -1.45em;
+  vertical-align: -0.18em;
+  border: 2px solid var(--c);
+  border-radius: 4px;
+  color: var(--c);
+  font-size: 0.85em;
+  font-weight: 700;
+  line-height: 1;
+}
+.task-icon[data-group="blue"] { --c: var(--nr-c-blue); }
+.task-icon[data-group="red"] { --c: var(--nr-c-red); }
+.task-icon[data-group="green"] { --c: var(--nr-c-green); }
+.task-icon[data-group="gold"] { --c: var(--nr-c-gold); }
+.task-icon[data-group="amber"] { --c: var(--nr-c-amber); }
+.task-icon[data-group="bubble"] { --c: var(--nr-c-violet); border-radius: 50% 50% 50% 2px; }
+.task-icon[data-task="/"] { background: linear-gradient(135deg, var(--c) 50%, transparent 50%); }
+.task-list-item.cancelled { text-decoration: line-through; color: var(--nr-c-muted); }
+
+/* tags: hairline pill, like the site's tags */
+.tag {
+  display: inline-block;
+  padding: 0 0.6em;
+  border: 1px solid color-mix(in srgb, var(--nr-c-violet) 45%, transparent);
+  border-radius: 999px;
+  font-size: 0.85em;
+  line-height: 1.5;
+  color: var(--nr-c-violet);
+}
+
+/* highlights (Novaroma themes use the season fill from the rule further up) */
+body:not([data-vscode-theme-name^="Novaroma"]) mark {
+  background: color-mix(in srgb, var(--nr-c-gold) 30%, transparent);
+  color: inherit;
+  border-radius: 4px;
+  padding: 0 0.15em;
+}
+
+/* footnotes */
+.footnote-ref a, a.footnote-backref { text-decoration: none; }
+hr.footnotes-sep { margin-top: 2rem; }
+section.footnotes { font-size: 0.85em; color: var(--nr-c-muted); }

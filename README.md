@@ -1,6 +1,6 @@
 # Novaroma
 
-Colour themes, a file icon theme, a product icon theme, Markdown preview styling, a terminal prompt and profiles for VS Code, built from the Nova Roma design system of [novaroma-homelab.uk](https://novaroma-homelab.uk): burgundy `main`, cream `accent`, near-black `text`, and five seasons.
+Colour themes, a file icon theme, a product icon theme, Markdown preview styling and profiles for VS Code, built from the Nova Roma design system of [novaroma-homelab.uk](https://novaroma-homelab.uk): burgundy `main`, cream `accent`, near-black `text`, and five seasons.
 
 ![Novaroma Herbst Light and Dark](images/hero.png)
 
@@ -68,13 +68,20 @@ Choose it with **Preferences: Product Icon Theme**; **Novaroma: Apply Theme Now*
 
 While a Novaroma colour theme is active, the Markdown preview uses the Nova Roma web style: a 2.5rem `h1` with the 2px `main` rule under it, `section-title` `h2`, uppercase eyebrow `h4`, 1.7 line height, outlined code blocks, blockquotes and tables with soft `accent` lines and rounded corners, inline code as a cream chip, list markers in `season-ink`, `<mark>` in the season fill and pill-shaped `<kbd>`. Colours come from the active theme, so every season and light/dark variant applies automatically. With other colour themes the preview is unchanged.
 
+### Obsidian syntax
+
+The preview also understands the Obsidian syntax used in an Obsidian vault, so notes look the same in VS Code:
+
+- **Callouts**: `> [!note] Title` with every Obsidian type and alias (note, abstract/summary/tldr, info, todo, tip/hint/important, success/check/done, question/help/faq, warning/caution/attention, failure/fail/missing, danger/error, bug, example, quote/cite). Each type has its own line icon and season colour. The fold markers `+` and `-` are accepted; callouts are always shown open.
+- **Checkboxes**: `- [ ]` and `- [x]`, plus the alternate statuses `>` rescheduled, `<` scheduled, `!` important, `-` cancelled, `/` in progress, `?` question, `*` star, `n` note, `l` location, `i` information, `I` idea, `S` amount, `p` pro, `c` con, `b` bookmark, `"` quote, `u` up, `d` down, `w` win, `k` key, `f` fire and `0`–`9` speech bubbles. They are display-only.
+- **Tags**: `#tag` and `#nested/tag` as hairline pills.
+- **Highlights**: `==text==`.
+- **Comments**: `%%hidden%%`, inline or across several lines, are not shown.
+- **Footnotes**: `[^1]` with the notes collected at the end.
+
+LaTeX (`$…$` and `$$…$$`) is rendered by VS Code itself. Wiki-links (`[[Note]]`) and embeds (`![[file]]`) are left as text.
+
 ![Markdown preview in Herbst Light and Winter Dark](images/markdown.png)
-
-## Terminal prompt
-
-The extension includes a Novaroma prompt for [Starship](https://starship.rs), which works in zsh, bash, fish and PowerShell. It shows the folder, git branch and status, the Python, .NET or Node version, and how long a slow command took. It uses only the 16 terminal colours and plain-text glyphs, so it follows the active Novaroma theme and needs no special font.
-
-Run **Novaroma: Toggle Novaroma Terminal Prompt (Starship)** to use it in VS Code's terminal. This only sets `STARSHIP_CONFIG` for new VS Code terminals; your shell's own configuration and other terminal apps stay as they are. Starship must be installed and started in your shell (for zsh: `eval "$(starship init zsh)"` at the end of `~/.zshrc`). **Novaroma: Open Terminal Prompt Config** shows the file; copy it to `~/.config/starship.toml` to use it outside VS Code too.
 
 ## Seasons, light/dark and swapped
 
@@ -98,7 +105,6 @@ If you pick a Novaroma theme by hand in **Preferences: Color Theme**, the extens
 - `novaroma.autoApply`: switch automatically when the season or these settings change, only while a Novaroma theme is in use (default `true`).
 - `novaroma.setIconTheme`: also select Novaroma Icons when applying (default `true`).
 - `novaroma.setProductIconTheme`: also select Novaroma Product Icons when applying (default `true`).
-- `novaroma.terminalPrompt`: use the Novaroma Starship prompt in VS Code's terminal (default `false`).
 - `novaroma.showStatusBarItem`: show the season in the status bar (default `true`).
 
 ## Profiles
@@ -112,11 +118,19 @@ Run **Novaroma: Apply Profile…** to apply a set of editor settings together wi
 
 Before a profile is applied, the settings it changes are saved; **Novaroma: Undo Last Profile** (or **Undo** in the notification) restores them.
 
-The same four profiles also come as real VS Code profiles in the `profiles` folder of the source (`Novaroma-Focus.code-profile` and so on). Import one with **Profiles: Import Profile…**. VS Code installs extensions per profile, so install the Novaroma VSIX again inside the new profile after importing it.
+The same four profiles also come as real VS Code profiles in the `profiles` folder of the [GitHub repository](https://github.com/JestingDart4369/novaroma-vscode/tree/main/profiles) (`Novaroma-Focus.code-profile` and so on). Import one with **Profiles: Import Profile…**. VS Code installs extensions per profile, so install the Novaroma VSIX again inside the new profile after importing it.
+
+## Privacy
+
+Novaroma collects no data. It has no telemetry, makes no network requests, does not read or upload your files and does not start processes. It only changes VS Code settings when you run one of its commands, or when the season changes while `novaroma.autoApply` is on. Details are in [PRIVACY.md](PRIVACY.md).
+
+## Support
+
+Questions, bugs and ideas go to [GitHub Issues](https://github.com/JestingDart4369/novaroma-vscode/issues). See [SUPPORT.md](SUPPORT.md) for what to include.
 
 ## Install
 
-In VS Code open the Extensions view, click **…**, choose **Install from VSIX…** and select `novaroma-2.1.1.vsix`. Then run **Novaroma: Apply Theme Now**, or choose a theme with **Preferences: Color Theme** and **Novaroma Icons** with **Preferences: File Icon Theme**.
+In VS Code open the Extensions view, click **…**, choose **Install from VSIX…** and select the `.vsix` from the latest GitHub release. Then run **Novaroma: Apply Theme Now**, or choose a theme with **Preferences: Color Theme** and **Novaroma Icons** with **Preferences: File Icon Theme**.
 
 ## Build from source
 
@@ -128,7 +142,7 @@ python3 build/check.py      # contrast check
 python3 build/preview.py    # preview images (needs rsvg-convert and Pillow)
 python3 build/product_icons.py  # product icon font (needs picosvg, fonttools, skia-pathops)
 python3 build/profiles.py   # .code-profile files
-npx @vscode/vsce package --no-rewrite-relative-links
+npx @vscode/vsce package     # README images become GitHub links, as the Marketplace requires
 ```
 
 The logo is the Nova Roma Home Lab mark, used as it is.
