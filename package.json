@@ -1,7 +1,7 @@
 {
   "name": "novaroma",
   "displayName": "Novaroma",
-  "description": "Nova Roma colour, file icon and product icon themes: Standard, Frühling, Sommer, Herbst and Winter in light and dark, normal and swapped, with automatic seasons, profiles and Markdown preview styling.",
+  "description": "Nova Roma colour, file icon and product icon themes: Standard, Frühling, Sommer, Herbst and Winter in light and dark, normal and swapped, switching with the calendar, profiles and Markdown preview styling.",
   "version": "2.2.2",
   "publisher": "JestingDart4369",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "novaroma",
     "burgundy",
     "cream",
-    "seasons",
+    "palettes",
     "light",
     "dark",
     "product icon theme",
@@ -167,8 +167,8 @@
         "category": "Novaroma"
       },
       {
-        "command": "novaroma.chooseSeason",
-        "title": "Choose Season…",
+        "command": "novaroma.choosePalette",
+        "title": "Choose Palette…",
         "category": "Novaroma"
       },
       {
@@ -190,7 +190,7 @@
     "configuration": {
       "title": "Novaroma",
       "properties": {
-        "novaroma.season": {
+        "novaroma.palette": {
           "type": "string",
           "enum": [
             "auto",
@@ -209,7 +209,7 @@
             "Winter — frost ground, ice highlight."
           ],
           "default": "auto",
-          "description": "Which Novaroma season to use."
+          "description": "Which Novaroma palette to use."
         },
         "novaroma.appearance": {
           "type": "string",
@@ -242,7 +242,7 @@
         "novaroma.autoApply": {
           "type": "boolean",
           "default": true,
-          "description": "While a Novaroma theme is active, switch automatically when the season changes and when these settings change."
+          "description": "While a Novaroma theme is active, switch automatically when the calendar reaches the next palette (1 March, 1 June, 1 September, 1 December) and when these settings change."
         },
         "novaroma.setIconTheme": {
           "type": "boolean",
@@ -252,7 +252,7 @@
         "novaroma.showStatusBarItem": {
           "type": "boolean",
           "default": true,
-          "description": "Show the current season in the status bar while a Novaroma theme is active."
+          "description": "Show the current palette in the status bar while a Novaroma theme is active."
         },
         "novaroma.setProductIconTheme": {
           "type": "boolean",

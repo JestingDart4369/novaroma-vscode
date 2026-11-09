@@ -19,7 +19,7 @@ def main():
             "workbench.preferredDarkColorTheme": "Novaroma Standard Dark",
             "workbench.iconTheme": "novaroma-icons",
             "workbench.productIconTheme": "novaroma-product-icons",
-            "novaroma.season": "auto",
+            "novaroma.palette": "auto",
             "novaroma.appearance": "system",
             "novaroma.variant": "normal",
             **data["base"],

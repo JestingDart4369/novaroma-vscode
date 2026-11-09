@@ -1,4 +1,4 @@
-// Novaroma — season, light/dark and profile switching for the Novaroma themes.
+// Novaroma — palette, light/dark and profile switching for the Novaroma themes.
 "use strict";
 const vscode = require("vscode");
 const presets = require("./presets.json");
@@ -6,7 +6,7 @@ const { taskLists } = require("./tasklists");
 const { obsidian } = require("./obsidian");
 const footnotes = require("./vendor/markdown-it-footnote");
 
-const SEASONS = [
+const PALETTES = [
   { id: "standard", name: "Standard", detail: "The live novaroma-homelab.uk colours" },
   { id: "fruehling", name: "Frühling", detail: "March – May · cherry blossom" },
   { id: "sommer", name: "Sommer", detail: "June – August · sun" },
@@ -34,7 +34,7 @@ function cfg() {
   return vscode.workspace.getConfiguration("novaroma");
 }
 
-function seasonByDate(d = new Date()) {
+function paletteByDate(d = new Date()) {
   const m = d.getMonth(); // 0 = January
   if (m >= 2 && m <= 4) return "fruehling";
   if (m >= 5 && m <= 7) return "sommer";
@@ -42,28 +42,28 @@ function seasonByDate(d = new Date()) {
   return "winter";
 }
 
-function currentSeason() {
-  const s = cfg().get("season", "auto");
-  return s === "auto" ? seasonByDate() : s;
+function currentPalette() {
+  const s = cfg().get("palette", "auto");
+  return s === "auto" ? paletteByDate() : s;
 }
 
-function seasonName(id) {
-  return (SEASONS.find((s) => s.id === id) || SEASONS[0]).name;
+function paletteName(id) {
+  return (PALETTES.find((s) => s.id === id) || PALETTES[0]).name;
 }
 
-function themeName(season, mode, variant) {
-  return `Novaroma ${seasonName(season)} ${mode === "light" ? "Light" : "Dark"}${variant === "swapped" ? " Swapped" : ""}`;
+function themeName(palette, mode, variant) {
+  return `Novaroma ${paletteName(palette)} ${mode === "light" ? "Light" : "Dark"}${variant === "swapped" ? " Swapped" : ""}`;
 }
 
 function targets() {
-  const season = currentSeason();
+  const palette = currentPalette();
   const variant = cfg().get("variant", "normal");
   return {
-    season,
+    palette,
     variant,
     appearance: cfg().get("appearance", "system"),
-    light: themeName(season, "light", variant),
-    dark: themeName(season, "dark", variant),
+    light: themeName(palette, "light", variant),
+    dark: themeName(palette, "dark", variant),
   };
 }
 
@@ -115,7 +115,7 @@ async function applyInner() {
   updateStatus();
 }
 
-// Re-apply only if Novaroma is in use and the expected theme differs (e.g. a new season began).
+// Re-apply only if Novaroma is in use and the expected theme differs (e.g. a new palette began).
 async function maybeAutoApply() {
   if (!cfg().get("autoApply", true) || !novaromaActive()) return;
   const t = targets();
@@ -143,12 +143,12 @@ async function syncFromThemeName(name) {
 async function syncInner(name) {
   const m = /^Novaroma (\S+) (Light|Dark)( Swapped)?$/.exec(name || "");
   if (!m) return;
-  const season = SEASONS.find((s) => s.name === m[1]);
-  if (!season) return;
+  const palette = PALETTES.find((s) => s.name === m[1]);
+  if (!palette) return;
   const variant = m[3] ? "swapped" : "normal";
   if (cfg().get("variant", "normal") !== variant) await cfg().update("variant", variant, G);
-  if (currentSeason() !== season.id) {
-    await cfg().update("season", season.id === seasonByDate() ? "auto" : season.id, G);
+  if (currentPalette() !== palette.id) {
+    await cfg().update("palette", palette.id === paletteByDate() ? "auto" : palette.id, G);
   }
   if (!vscode.workspace.getConfiguration("window").get("autoDetectColorScheme")) {
     const mode = m[2].toLowerCase();
@@ -163,25 +163,25 @@ function updateStatus() {
     return;
   }
   const t = targets();
-  const auto = cfg().get("season", "auto") === "auto";
-  statusItem.text = `$(symbol-color) ${seasonName(t.season)}`;
+  const auto = cfg().get("palette", "auto") === "auto";
+  statusItem.text = `$(symbol-color) ${paletteName(t.palette)}`;
   statusItem.tooltip = new vscode.MarkdownString(
-    `**Novaroma** · ${seasonName(t.season)}${auto ? " (automatic)" : ""}\n\n` +
+    `**Novaroma** · ${paletteName(t.palette)}${auto ? " (automatic)" : ""}\n\n` +
       `${t.appearance === "system" ? "Follows system light/dark" : t.appearance === "dark" ? "Dark" : "Light"} · ` +
       `${t.variant === "swapped" ? "swapped" : "normal"} colours\n\nClick for options`
   );
   statusItem.show();
 }
 
-async function chooseSeason() {
-  const now = cfg().get("season", "auto");
+async function choosePalette() {
+  const now = cfg().get("palette", "auto");
   const items = [
-    { label: "$(calendar) Automatic", description: `now ${seasonName(seasonByDate())}`, id: "auto" },
-    ...SEASONS.map((s) => ({ label: s.name, description: s.detail, id: s.id })),
+    { label: "$(calendar) Automatic", description: `now ${paletteName(paletteByDate())}`, id: "auto" },
+    ...PALETTES.map((s) => ({ label: s.name, description: s.detail, id: s.id })),
   ].map((i) => ({ ...i, picked: i.id === now, detail: i.id === now ? "current" : undefined }));
-  const pick = await vscode.window.showQuickPick(items, { title: "Novaroma: Season" });
+  const pick = await vscode.window.showQuickPick(items, { title: "Novaroma: Palette" });
   if (!pick) return;
-  await cfg().update("season", pick.id, G);
+  await cfg().update("palette", pick.id, G);
   await apply();
 }
 
@@ -267,7 +267,7 @@ async function resetProfile(context) {
 async function menu(context) {
   const t = targets();
   const items = [
-    { label: `$(calendar) Season: ${seasonName(t.season)}`, description: cfg().get("season") === "auto" ? "automatic" : "", run: chooseSeason },
+    { label: `$(calendar) Palette: ${paletteName(t.palette)}`, description: cfg().get("palette") === "auto" ? "automatic" : "", run: choosePalette },
     { label: `$(color-mode) Light / Dark: ${t.appearance}`, run: chooseAppearance },
     { label: `$(arrow-swap) Colours: ${t.variant}`, description: "toggle swapped", run: toggleSwapped },
     { label: "$(account) Apply profile…", run: () => applyProfile(context) },
@@ -299,20 +299,20 @@ function activate(context) {
   reg("novaroma.menu", () => menu(context));
   reg("novaroma.applyProfile", () => applyProfile(context));
   reg("novaroma.resetProfile", () => resetProfile(context));
-  reg("novaroma.chooseSeason", chooseSeason);
+  reg("novaroma.choosePalette", choosePalette);
   reg("novaroma.chooseAppearance", chooseAppearance);
   reg("novaroma.toggleSwapped", toggleSwapped);
   reg("novaroma.apply", apply);
 
   statusItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
   statusItem.command = "novaroma.menu";
-  statusItem.name = "Novaroma season";
+  statusItem.name = "Novaroma palette";
   context.subscriptions.push(statusItem);
 
   context.subscriptions.push(
     vscode.workspace.onDidChangeConfiguration((e) => {
       if (applying) return;
-      if (e.affectsConfiguration("novaroma.season") || e.affectsConfiguration("novaroma.variant") ||
+      if (e.affectsConfiguration("novaroma.palette") || e.affectsConfiguration("novaroma.variant") ||
           e.affectsConfiguration("novaroma.appearance")) {
         maybeAutoApply();
       }
@@ -327,7 +327,7 @@ function activate(context) {
     })
   );
 
-  // The season can change while VS Code stays open: check every six hours.
+  // The palette can change while VS Code stays open: check every six hours.
   timer = setInterval(maybeAutoApply, 6 * 60 * 60 * 1000);
   context.subscriptions.push({ dispose: () => clearInterval(timer) });
 
