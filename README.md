@@ -118,7 +118,7 @@ Run **Novaroma: Apply Profile…** to apply a set of editor settings together wi
 
 Before a profile is applied, the settings it changes are saved; **Novaroma: Undo Last Profile** (or **Undo** in the notification) restores them.
 
-The same four profiles also come as real VS Code profiles in the `profiles` folder of the source (`Novaroma-Focus.code-profile` and so on). Import one with **Profiles: Import Profile…**. VS Code installs extensions per profile, so install the Novaroma VSIX again inside the new profile after importing it.
+The same four profiles also come as real VS Code profiles in the `profiles` folder of the [GitHub repository](https://github.com/JestingDart4369/novaroma-vscode/tree/main/profiles) (`Novaroma-Focus.code-profile` and so on). Import one with **Profiles: Import Profile…**. VS Code installs extensions per profile, so install the Novaroma VSIX again inside the new profile after importing it.
 
 ## Privacy
 

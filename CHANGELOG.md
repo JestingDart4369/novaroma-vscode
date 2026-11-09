@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.2
+
+- Smaller, cleaner package: the build scripts are no longer listed in `package.json`, and the importable `.code-profile` files are only in the GitHub repository, not inside the extension.
+- "obsidian" is no longer a search keyword; the README still describes the Obsidian syntax support.
+- Licence holder is now JestingDart4369.
+
 ## 2.2.1
 
 - Added a privacy statement (PRIVACY.md and a README section): Novaroma collects no data and makes no network requests.

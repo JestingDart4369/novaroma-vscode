@@ -2,7 +2,7 @@
   "name": "novaroma",
   "displayName": "Novaroma",
   "description": "Nova Roma colour, file icon and product icon themes for VS Code: Standard, Frühling, Sommer, Herbst and Winter in light and dark, normal and swapped, with automatic seasons, profiles and Markdown preview styling.",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "publisher": "JestingDart4369",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -33,7 +33,6 @@
     "dark",
     "product icon theme",
     "markdown",
-    "obsidian",
     "callouts"
   ],
   "main": "./src/extension.js",
@@ -273,10 +272,6 @@
       "./media/markdown.css"
     ],
     "markdown.markdownItPlugins": true
-  },
-  "scripts": {
-    "build": "python3 build/build.py",
-    "package": "npx @vscode/vsce package --no-rewrite-relative-links"
   },
   "bugs": {
     "url": "https://github.com/JestingDart4369/novaroma-vscode/issues"
