@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.3
+
+- First version published automatically from GitHub with Trusted Publishing. Same content as 2.2.2, the first version on the Marketplace.
+
 ## 2.2.2
 
 - Smaller, cleaner package: the build scripts are no longer listed in `package.json`, and the importable `.code-profile` files are only in the GitHub repository, not inside the extension.
