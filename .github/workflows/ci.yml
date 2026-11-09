@@ -74,7 +74,7 @@ jobs:
           grep -q "^## $v" CHANGELOG.md || { echo "::error::CHANGELOG.md has no '## $v' section."; exit 1; }
 
       - name: Package VSIX
-        run: npx --yes @vscode/vsce@3 package --out novaroma-test.vsix
+        run: npx --yes @vscode/vsce@4.1.0 package --out novaroma-test.vsix
 
       - uses: actions/upload-artifact@v4
         with:
