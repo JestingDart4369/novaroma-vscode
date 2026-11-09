@@ -6,3 +6,5 @@ product-icons/svg/**
 .github/**
 CONTRIBUTING.md
 profiles/**
+images/**
+!images/icon.png

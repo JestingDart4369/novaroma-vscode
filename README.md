@@ -142,7 +142,7 @@ python3 build/check.py      # contrast check
 python3 build/preview.py    # preview images (needs rsvg-convert and Pillow)
 python3 build/product_icons.py  # product icon font (needs picosvg, fonttools, skia-pathops)
 python3 build/profiles.py   # .code-profile files
-npx @vscode/vsce package --no-rewrite-relative-links
+npx @vscode/vsce package     # README images become GitHub links, as the Marketplace requires
 ```
 
 The logo is the Nova Roma Home Lab mark, used as it is.
